@@ -1,5 +1,5 @@
 import express from "express";
-import { routes } from "./routes";
+import { protectRouteMiddleware, routes } from "./routes";
 import { db } from './db';
 import bodyParser from "body-parser";
 import * as admin from 'firebase-admin'
@@ -11,10 +11,11 @@ admin.initializeApp({
 
 const app = express();
 
+app.use(express.static(__dirname + '/uploads'));
 app.use(bodyParser.json());
 
 routes.forEach(route => {
-    app[route.method](route.path, route.handler);
+    app[route.method](route.path, protectRouteMiddleware, route.handler);
 });
 
 const start = async () => {
