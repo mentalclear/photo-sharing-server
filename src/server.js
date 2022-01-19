@@ -3,6 +3,7 @@ import { protectRouteMiddleware, routes } from "./routes";
 import { db } from './db';
 import bodyParser from "body-parser";
 import * as admin from 'firebase-admin'
+import fileUpload from 'express-fileupload';
 import credentials from './credentials.json';
 
 admin.initializeApp({
@@ -12,6 +13,7 @@ admin.initializeApp({
 const app = express();
 
 app.use(express.static(__dirname + '/uploads'));
+app.use(fileUpload());
 app.use(bodyParser.json());
 
 routes.forEach(route => {
