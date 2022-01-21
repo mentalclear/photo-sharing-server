@@ -6,3 +6,4 @@ export { getPopulatedPhoto } from './getPopulatedPhoto';
 export { getSanitizedPhoto } from './getSanitizedPhoto';
 export { getUserOwnsPhoto } from './getUserOwnsPhoto';
 export { getPhotoIsSharedWithUser } from './getPhotoIsSharedWithUser';
+export { sharePhotoWithUserByEmail } from './sharePhotoWithUserByEmail';
